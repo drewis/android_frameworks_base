@@ -931,7 +931,7 @@ class LockScreen extends LinearLayout implements KeyguardScreen, KeyguardUpdateM
                                 mUpdateMonitor.getTelephonySpn()));
 
                 // Empty now, but used for sliding tab feedback
-                mScreenLocked.setText("");
+                mScreenLocked.setText(R.string.drews_custom_lockscreen_text);
 
                 // layout
                 mScreenLocked.setVisibility(View.VISIBLE);

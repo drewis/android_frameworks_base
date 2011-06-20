@@ -2435,5 +2435,7 @@
     <string name="permlab_revokePermissions">Allows view and edit of revoked permissions. Not for use by normal applications.</string>
     <!-- Description of an application permission that lets lets an application view/edit revoked permissions. -->
     <string name="permdesc_revokePermissions">Allows read and write for revoked permissions. Not for use by normal applications.</string>
+    
+    <string name="drews_custom_lockscreen_text">Hey Bitch! This phone ain\'t your\'s. Put it down before I go America all over your ass! </string>
 
 </resources>
