@@ -2567,6 +2567,12 @@ public final class Settings {
         public static final String LOCKSCREEN_BACKGROUND = "lockscreen_background";
 
         /**
+         * Toggle drew's lockscreen text
+         * @hide
+         */
+        public static final String LOCKSCREEN_DREW = "lockscreen_drew";
+        
+        /**
          * Sets the incoming call accept/reject style
          * @hide
          */

@@ -220,6 +220,9 @@ class LockScreen extends LinearLayout implements KeyguardScreen, KeyguardUpdateM
     private boolean mRotaryHideArrows = (Settings.System.getInt(mContext.getContentResolver(),
             Settings.System.LOCKSCREEN_ROTARY_HIDE_ARROWS, 0) == 1);
 
+    private boolean mDrew = (Settings.System.getInt(mContext.getContentResolver(),
+            Settings.System.LOCKSCREEN_DREW, 0) == 1);
+
     private boolean mUseRotaryLockscreen = (mLockscreenStyle == 2);
 
     private boolean mUseRotaryRevLockscreen = (mLockscreenStyle == 3);
@@ -1130,8 +1133,12 @@ class LockScreen extends LinearLayout implements KeyguardScreen, KeyguardUpdateM
                                 mUpdateMonitor.getTelephonyPlmn(),
                                 mUpdateMonitor.getTelephonySpn()));
 
-                // Empty now, but used for sliding tab feedback
-                mScreenLocked.setText("");
+                // DREW: used for sliding tab feedback
+                if (mDrew){
+                mScreenLocked.setText(R.string.drews_custom_lockscreen_text);
+                } else {
+                    mScreenLocked.setText("");
+                }
 
                 // layout
                 setUnlockWidgetsState(true);
