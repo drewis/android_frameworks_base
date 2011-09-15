@@ -67,27 +67,27 @@
             />
 
     <!-- time and date -->
-        <com.android.internal.widget.DigitalClock android:id="@+id/time"
+        <com.android.internal.widget.FuzzyClock android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/carrier"
-            android:layout_marginTop="32dip"
-            android:layout_marginLeft="20dip"
+            android:layout_marginTop="24dip"
+            android:layout_marginLeft="12dip"
+            android:layout_marginRight="12dip"
             android:paddingBottom="8dip"
             >
 
             <TextView android:id="@+id/timeDisplay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:singleLine="true"
                 android:ellipsize="none"
-                android:textSize="72sp"
+                android:textSize="48sp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:shadowColor="#C0000000"
                 android:shadowDx="0"
                 android:shadowDy="0"
                 android:shadowRadius="3.0"
-                android:layout_marginBottom="10dip"
+                android:layout_marginBottom="8dip"
                 />
 
             <TextView android:id="@+id/am_pm"
@@ -105,7 +105,7 @@
                 android:shadowDy="0"
                 android:shadowRadius="3.0"
                 />
-        </com.android.internal.widget.DigitalClock>
+        </com.android.internal.widget.FuzzyClock>
 
         <TextView
             android:id="@+id/date"
@@ -154,9 +154,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/customMsg"
-            android:layout_marginLeft="24dip"
+            android:layout_marginLeft="12dip"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_marginTop="12dip"
+            android:layout_marginTop="4dip"
             android:drawablePadding="4dip"
             />
 
