@@ -2536,6 +2536,11 @@ public final class Settings {
         public static final String LOCKSCREEN_DREW = "lockscreen_drew";
         
         /**
+        * Toggle fuzzyclock <=> digitalclock on the lockscreen
+        * @hide
+        */
+        public static final String LOCKSCREEN_FUZZY_CLOCK = "lockscreen_fuzzy_clock";
+        /**
          * Sets the incoming call accept/reject style
          * @hide
          */
