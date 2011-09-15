@@ -318,7 +318,7 @@ class LockScreen extends LinearLayout implements KeyguardScreen, KeyguardUpdateM
         if (mUseFuzzyClock){
             //do shit
             mFuzzyClock = (FuzzyClock) findViewById(R.id.fuzzy_time);
-            mTime = (TextView) findViewById(R.id.fuzzy_timeDisplay);
+            mTime = (TextView) findViewByID (R.id.fuzzy_timeDisplay);
         } else {
             mClock = (DigitalClock) findViewById(R.id.time);
             mTime = (TextView) findViewById(R.id.timeDisplay);
