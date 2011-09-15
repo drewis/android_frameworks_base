@@ -19,6 +19,7 @@ package com.android.internal.policy.impl;
 import com.android.internal.R;
 import com.android.internal.telephony.IccCard;
 import com.android.internal.widget.DigitalClock;
+import com.android.internal.widget.FuzzyClock;
 import com.android.internal.widget.LockPatternUtils;
 import com.android.internal.widget.RotarySelector;
 import com.android.internal.widget.SlidingTab;
@@ -102,6 +103,7 @@ class LockScreen extends LinearLayout implements KeyguardScreen, KeyguardUpdateM
     private RotarySelector mRotarySelector;
     private RingSelector mRingSelector;
     private DigitalClock mClock;
+    private FuzzyClock mFuzzyClock;
     private TextView mDate;
     private TextView mTime;
     private TextView mAmPm;
@@ -229,6 +231,9 @@ class LockScreen extends LinearLayout implements KeyguardScreen, KeyguardUpdateM
 
     private boolean mUseLenseSquareLockscreen = (mLockscreenStyle == 4);
     private boolean mLensePortrait = false;
+    
+    private boolean mUseFuzzyClock = (Settings.System.getInt(mContext.getContentResolver(),
+            Settings.System.LOCKSCREEN_FUZZY_CLOCK, 0) == 1);
 
     private boolean mUseRingLockscreen = (mLockscreenStyle == 5);
 
@@ -350,7 +355,9 @@ class LockScreen extends LinearLayout implements KeyguardScreen, KeyguardUpdateM
 
         final LayoutInflater inflater = LayoutInflater.from(context);
         if (DBG) Log.v(TAG, "Creation orientation = " + mCreationOrientation);
-        if (mCreationOrientation != Configuration.ORIENTATION_LANDSCAPE) {
+        if (mUseFuzzyClock){
+            inflater.inflate(R.layout.keyguard_screen_tab_unlock_fuzzyclock, this, true);
+        } else if (mCreationOrientation != Configuration.ORIENTATION_LANDSCAPE) {
             inflater.inflate(R.layout.keyguard_screen_tab_unlock, this, true);
         } else {
             inflater.inflate(R.layout.keyguard_screen_tab_unlock_land, this, true);
@@ -362,7 +369,11 @@ class LockScreen extends LinearLayout implements KeyguardScreen, KeyguardUpdateM
         mCarrier.setSelected(true);
         mCarrier.setTextColor(0xffffffff);
 
-        mClock = (DigitalClock) findViewById(R.id.time);
+        if (mUseFuzzyClock){
+            mFuzzyClock = (FuzzyClock) findViewById(R.id.time);
+        } else {
+            mClock = (DigitalClock) findViewById(R.id.time);
+        }
         mTime = (TextView) findViewById(R.id.timeDisplay);
         mAmPm = (TextView) findViewById(R.id.am_pm);
         mDate = (TextView) findViewById(R.id.date);
