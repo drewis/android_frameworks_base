@@ -19,7 +19,6 @@ package com.android.internal.policy.impl;
 import com.android.internal.R;
 import com.android.internal.telephony.IccCard;
 import com.android.internal.widget.DigitalClock;
-import com.android.internal.widget.FuzzyClock;
 import com.android.internal.widget.LockPatternUtils;
 import com.android.internal.widget.RotarySelector;
 import com.android.internal.widget.SlidingTab;
@@ -103,7 +102,6 @@ class LockScreen extends LinearLayout implements KeyguardScreen, KeyguardUpdateM
     private RotarySelector mRotarySelector;
     private RingSelector mRingSelector;
     private DigitalClock mClock;
-    private FuzzyClock mFuzzyClock;
     private TextView mDate;
     private TextView mTime;
     private TextView mAmPm;
@@ -223,9 +221,6 @@ class LockScreen extends LinearLayout implements KeyguardScreen, KeyguardUpdateM
             Settings.System.LOCKSCREEN_ROTARY_HIDE_ARROWS, 0) == 1);
 
     private boolean mDrew = (Settings.System.getInt(mContext.getContentResolver(),
-            Settings.System.LOCKSCREEN_DREW, 0) == 1);
-            
-    private boolean mUseFuzzyClock = (Settings.System.getInt(mContext.getContentResolver(),
             Settings.System.LOCKSCREEN_DREW, 0) == 1);
 
     private boolean mUseRotaryLockscreen = (mLockscreenStyle == 2);
@@ -366,15 +361,10 @@ class LockScreen extends LinearLayout implements KeyguardScreen, KeyguardUpdateM
         // Required for Marquee to work
         mCarrier.setSelected(true);
         mCarrier.setTextColor(0xffffffff);
-        if (mUseFuzzyClock){
-            //do shit
-            mFuzzyClock = (FuzzyClock) findViewById(R.id.fuzzy_time);
-            mTime = (TextView) findViewByID (R.id.fuzzy_timeDisplay);
-        } else {
-            mClock = (DigitalClock) findViewById(R.id.time);
-            mTime = (TextView) findViewById(R.id.timeDisplay);
-            mAmPm = (TextView) findViewById(R.id.am_pm);
-        }
+
+        mClock = (DigitalClock) findViewById(R.id.time);
+        mTime = (TextView) findViewById(R.id.timeDisplay);
+        mAmPm = (TextView) findViewById(R.id.am_pm);
         mDate = (TextView) findViewById(R.id.date);
         mStatus1 = (TextView) findViewById(R.id.status1);
         mStatus2 = (TextView) findViewById(R.id.status2);
