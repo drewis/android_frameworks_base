@@ -90,34 +90,6 @@
 
         </com.android.internal.widget.DigitalClock>
 
-
-        <com.android.internal.widget.FuzzyClock android:id="@+id/fuzzy_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="15dip"
-            android:layout_marginLeft="20dip"
-            >
-
-            <TextView android:id="@+id/fuzzy_timeDisplay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="bottom"
-                android:singleLine="true"
-                android:ellipsize="none"
-                android:textSize="46sp"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:shadowColor="#C0000000"
-                android:shadowDx="0"
-                android:shadowDy="0"
-                android:shadowRadius="3.0"
-                android:layout_marginBottom="6dip"
-                />
-
-        </com.android.internal.widget.FuzzyClock>
-
-
         <TextView
             android:id="@+id/date"
             android:layout_width="wrap_content"
