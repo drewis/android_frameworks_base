@@ -1174,7 +1174,17 @@ public class RingSelector extends ViewGroup {
 
     public void enableMiddlePrimary(boolean enable) {
         mMiddlePrimary = enable;
+        enableMiddleRing(enable);
     }
+
+    public void enableRingMinimal(boolean enable) {
+        enableMiddlePrimary(enable);
+        //enableMiddleRing(enable);
+        mRightRing.setHiddenState(enable);
+        mLeftRing.setHiddenState(enable);
+        
+    }
+
     /**
      * Triggers haptic feedback.
      */
