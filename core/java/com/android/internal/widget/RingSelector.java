@@ -1205,7 +1205,7 @@ public class RingSelector extends ViewGroup {
         mMiddleRing.setHiddenState(!enable);
     }
 
-    public void enableUnlockMiddle(boolean enable) {
+    public void enableMiddlePrimary(boolean enable) {
         mUnlockMiddle = enable;
     }
     /**
