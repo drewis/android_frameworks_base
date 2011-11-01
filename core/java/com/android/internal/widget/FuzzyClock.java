@@ -250,8 +250,8 @@ public class FuzzyClock extends LinearLayout {
         else if(mHours == 9) { mNextH = mTen; mTimeH = mNine; }
         else if(mHours == 10) { mNextH = mEleven; mTimeH = mTen; }
         else if(mHours == 11) { mNextH = mTwelve; mTimeH = mEleven; }
-        else if(mHours == 12) { mNextH = mOne; mTimeH = mTwelve; }
-        else { mNextH = mTimeH = "it fuckin broke"; }// { mNextH = mOne; mTimeH = mTwelve; }
+        else if(mHours == 12 || mHours == 0) { mNextH = mOne; mTimeH = mTwelve; }
+        else { mNextH = mTimeH = "it\'s fucked"; }// { mNextH = mOne; mTimeH = mTwelve; }
 
         //minutes
         if ( 0 <= mMinutes && mMinutes <= 4 ) mTimeString = mTimeH + mOclock;
