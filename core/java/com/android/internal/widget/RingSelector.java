@@ -83,7 +83,7 @@ public class RingSelector extends ViewGroup {
     private final int mSecRingCenterOffset;
 
     private boolean mUseMiddleRing = true;
-    private boolean mUnlockMiddle = false;
+    private boolean mMiddlePrimary = false;
 
     /**
      * Either {@link #HORIZONTAL} or {@link #VERTICAL}.
@@ -824,7 +824,7 @@ public class RingSelector extends ViewGroup {
                     mCurrentRing = mLeftRing;
                     mOtherRing1 = mRightRing;
                     mOtherRing2 = mMiddleRing;
-                    if (mUnlockMiddle) {
+                    if (mMiddlePrimary) {
                         for (SecRing secRing : mSecRings) {
                             secRing.show();
                         }
@@ -839,7 +839,7 @@ public class RingSelector extends ViewGroup {
                     mCurrentRing = mMiddleRing;
                     mOtherRing1 = mLeftRing;
                     mOtherRing2 = mRightRing;
-                    if (!mUnlockMiddle) {
+                    if (!mMiddlePrimary) {
                         for (SecRing secRing : mSecRings) {
                             secRing.show();
                         }
@@ -894,7 +894,7 @@ public class RingSelector extends ViewGroup {
             switch (action) {
                 case MotionEvent.ACTION_MOVE:
                     moveRing(x, y);
-                    if (!mUnlockMiddle && mUseMiddleRing && mCurrentRing == mMiddleRing) {
+                    if (!mMiddlePrimary && mUseMiddleRing && mCurrentRing == mMiddleRing) {
                         for (int q = 0; q < 4; q++) {
                             if (!mSecRings[q].isHidden() && mSecRings[q].contains((int) x, (int) y)) {
                                 mSecRings[q].activate();
@@ -902,7 +902,7 @@ public class RingSelector extends ViewGroup {
                                 mSecRings[q].deactivate();
                             }
                         }
-                    } else if (mUnlockMiddle && mUseMiddleRing && mCurrentRing == mLeftRing) {
+                    } else if (mMiddlePrimary && mUseMiddleRing && mCurrentRing == mLeftRing) {
                         for (int q = 0; q < 4; q++) {
                             if (!mSecRings[q].isHidden() && mSecRings[q].contains((int) x, (int) y)) {
                                 mSecRings[q].activate();
@@ -916,7 +916,7 @@ public class RingSelector extends ViewGroup {
                     mSelectedRingId = -1;
                     boolean thresholdReached = false;
 
-                    if (mUnlockMiddle) {
+                    if (mMiddlePrimary) {
                         if (mCurrentRing != mLeftRing) {
                             int dx = (int) x - mCurrentRing.alignCenterX;
                             int dy = (int) y - mCurrentRing.alignCenterY;
@@ -1206,8 +1206,17 @@ public class RingSelector extends ViewGroup {
     }
 
     public void enableMiddlePrimary(boolean enable) {
-        mUnlockMiddle = enable;
+        mMiddlePrimary = enable;
+        enableMiddleRing(enable);
     }
+
+    public void enableRingMinimal(boolean enable) {
+        enableMiddlePrimary(enable);
+        //enableMiddleRing(enable);
+        mRightRing.setHiddenState(enable);
+        mLeftRing.setHiddenState(enable);
+    }
+
     /**
      * Triggers haptic feedback.
      */

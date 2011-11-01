@@ -2555,6 +2555,12 @@ public final class Settings {
         public static final String LOCKSCREEN_RING_UNLOCK_MIDDLE = "lockscreen_ring_unlock_middle";
 
         /**
+         * Put a description....
+         * @hide
+         */
+        public static final String LOCKSCREEN_RING_MINIMAL = "lockscreen_ring_minimal";
+
+        /**
          * Sets the lockscreen style
          * @hide
          */

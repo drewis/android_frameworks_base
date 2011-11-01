@@ -208,102 +208,70 @@ public class FuzzyClock extends LinearLayout {
 
     private void updateTime() {
         mCalendar.setTimeInMillis(System.currentTimeMillis());
-        int minutes = mCalendar.get(mCalendar.MINUTE);
-        int hours = mCalendar.get(mCalendar.HOUR);
+        int mMinutes = mCalendar.get(mCalendar.MINUTE);
+        int mHours = mCalendar.get(mCalendar.HOUR);
+        CharSequence mTimeString;
 
-        //find hours string equivalents
-        CharSequence nextH,timeH,timestring;
-        switch (hours) {
-            case 1: nextH = "two";timeH = "one"; break;
-            case 2: nextH = "three";timeH = "two"; break;
-            case 3: nextH = "four";timeH = "three"; break;
-            case 4: nextH = "five";timeH = "four"; break;
-            case 5: nextH = "six";timeH = "five"; break;
-            case 6: nextH = "seven";timeH = "six"; break;
-            case 7: nextH = "eight";timeH = "seven"; break;
-            case 8: nextH = "nine";timeH = "eight"; break;
-            case 9: nextH = "ten";timeH = "nine"; break;
-            case 10: nextH = "eleven";timeH = "ten"; break;
-            case 11: nextH = "twelve";timeH = "eleven"; break;
-            case 12: nextH = "one";timeH = "twelve"; break;
-            default: nextH = "one";timeH = "twelve"; break;
-        }
+    String mNextH, mTimeH,
+        mOclock = " o\'clock",
+        mFivePast = "five after ",
+        mTenPast = "ten after ",
+        mQuarterPast = "a quarter after ",
+        mTwentyPast = " twenty",
+        mTwentyFivePast = "twenty five after ",
+        mHalfPast = "half past ",
+        mTwentyFiveTo = "twenty five till ",
+        mTwentyTo = "twenty till ",
+        mQuarterTo = "a quarter till ",
+        mTenTo = "ten till ",
+        mFiveTo = "five till ",
+        mOne = "one",
+        mTwo = "two",
+        mThree = "three",
+        mFour = "four",
+        mFive = "five",
+        mSix = "six",
+        mSeven = "seven",
+        mEight = "eight",
+        mNine = "nine",
+        mTen = "ten",
+        mEleven = "eleven",
+        mTwelve = "twelve";
 
-        switch (minutes) {
-            //oclock
-            case 0:
-            case 1:case 2:case 3: case 4:
-                timestring = timeH + " o\'clock";break;
-            //five past
-            case 5: case 6: case 7: case 8: case 9:
-                timestring = "five after " + timeH; break;
-            //ten past
-            case 10: case 11: case 12: case 13: case 14:
-                timestring = "ten after " + timeH; break;
-            //a quarter past
-            case 15: case 16: case 17: case 18: case 19:
-                timestring = "a quarter after " + timeH; break;
-            //twenty past
-            case 20: case 21: case 22: case 23: case 24:
-                timestring = timeH + " twenty"; break;
-            //twenty-five past
-            case 25: case 26: case 27: case 28: case 29:
-                timestring = "twenty five after " + timeH; break;
-            //half past
-            case 30: case 31: case 32: case 33: case 34:
-                timestring = "half past " + timeH; break;
-            //twenty-five till
-            case 35: case 36: case 37: case 38: case 39:
-                timestring = "twenty five till " + nextH; break;
-            //twenty till
-            case 40: case 41: case 42: case 43:
-                timestring = "twenty till " + nextH; break;
-            //a quarter till
-            case 44: case 45: case 46: case 47:
-                timestring = "a quarter till " + nextH; break;
-            //ten till
-            case 48: case 49: case 50: case 51:
-                timestring = "ten till " + nextH; break;
-            //five till
-            case 52: case 53: case 54: case 55:
-                timestring = "five till " + nextH; break;
-            //oclock
-            case 56: case 57: case 58: case 59: 
-            case 60:
-                timestring = nextH + " o\'clock"; break;
-            default: 
-                timestring = timeH; break;
-        }
-        
-        mTimeDisplay.setText(timestring);
-        //ugly if else to find the minutes string
-//        if        ( minutes < 3 ) {
-//            mTimeDisplay.setText(timeH + " o\'clock");
-//        } else if ( minutes < 8 ) {
-//            mTimeDisplay.setText("five past " + timeH);
-//        } else if ( minutes < 13 ) {
-//            mTimeDisplay.setText("ten past " + timeH);
-//        } else if ( minutes < 18 ) {
-//            mTimeDisplay.setText("quarter past " + timeH);
-//        } else if ( minutes < 23 ) {
-//            mTimeDisplay.setText("twenty past " + timeH);
-//        } else if ( minutes < 28 ) {
-//            mTimeDisplay.setText("twenty-five past " + timeH);
-//        } else if ( minutes < 33 ){
-//            mTimeDisplay.setText("half past " + timeH);
-//        } else if ( minutes < 38 ){
-//            mTimeDisplay.setText("twenty-five till " + nextH);
-//        } else if ( minutes < 43 ){
-//            mTimeDisplay.setText("twenty till " + nextH);
-//        } else if ( minutes < 48 ){
-//            mTimeDisplay.setText("quarter till " + nextH);
-//        } else if ( minutes < 53 ){
-//            mTimeDisplay.setText("ten till " + nextH);
-//        } else if ( minutes < 58 ){
-//            mTimeDisplay.setText("five till " + nextH);
-//        } else {
-//            mTimeDisplay.setText(nextH + " o\'clock");
-//        }
+        //hours
+        if(mHours == 1) { mNextH = mTwo; mTimeH = mOne; }
+        else if(mHours == 2) { mNextH = mThree; mTimeH = mTwo; }
+        else if(mHours == 3) { mNextH = mFour; mTimeH = mThree; }
+        else if(mHours == 4) { mNextH = mFive; mTimeH = mFour; }
+        else if(mHours == 5) { mNextH = mSix; mTimeH = mFive; }
+        else if(mHours == 6) { mNextH = mSeven; mTimeH = mSix; }
+        else if(mHours == 7) { mNextH = mEight; mTimeH = mSeven; }
+        else if(mHours == 8) { mNextH = mNine; mTimeH = mEight; }
+        else if(mHours == 9) { mNextH = mTen; mTimeH = mNine; }
+        else if(mHours == 10) { mNextH = mEleven; mTimeH = mTen; }
+        else if(mHours == 11) { mNextH = mTwelve; mTimeH = mEleven; }
+        else if(mHours == 12) { mNextH = mOne; mTimeH = mTwelve; }
+        else { mNextH = mTimeH = "it fuckin broke"; }// { mNextH = mOne; mTimeH = mTwelve; }
+
+        //minutes
+        if ( 0 <= mMinutes && mMinutes <= 4 ) mTimeString = mTimeH + mOclock;
+        else if ( 5 <= mMinutes && mMinutes <= 9 ) mTimeString = mFivePast + mTimeH;
+        else if ( 10 <= mMinutes && mMinutes <= 14 ) mTimeString = mTenPast + mTimeH;
+        else if ( 15 <= mMinutes && mMinutes <= 19 ) mTimeString = mQuarterPast + mTimeH;
+        else if ( 20 <= mMinutes && mMinutes <= 24 ) mTimeString = mTimeH + mTwentyPast;
+        else if ( 25 <= mMinutes && mMinutes <= 29 ) mTimeString = mTwentyFivePast + mTimeH;
+        else if ( 30 <= mMinutes && mMinutes <= 34 ) mTimeString = mHalfPast + mTimeH;
+        else if ( 35 <= mMinutes && mMinutes <= 39 ) mTimeString = mTwentyFiveTo + mNextH;
+        else if ( 40 <= mMinutes && mMinutes <= 43 ) mTimeString = mTwentyTo + mNextH;
+        else if ( 44 <= mMinutes && mMinutes <= 47 ) mTimeString = mQuarterTo + mNextH;
+        else if ( 48 <= mMinutes && mMinutes <= 51 ) mTimeString = mTenTo + mNextH;
+        else if ( 52 <= mMinutes && mMinutes <= 55 ) mTimeString = mFiveTo + mNextH;
+        else if ( 56 <= mMinutes && mMinutes <= 60 ) mTimeString = mNextH + mOclock;
+        else { mTimeString = "somethin\'s broke"; }
+
+        //print the time
+        mTimeDisplay.setText(mTimeString);
+
     }
 
     private void setDateFormat() {
