@@ -37,13 +37,36 @@ import java.text.DateFormatSymbols;
 import java.util.Calendar;
 
 /**
- * Displays the time
+ * Displays the time fuzzy style
  */
 public class FuzzyClock extends LinearLayout {
 
     private final static String M12 = "hh:mm";
     private final static String M24 = "kk:mm";
-
+    private final String mOclock = getResources().getString(R.string.fuzzy_oclock);
+    private final String mFivePast = getResources().getString(R.string.fuzzy_five_past);
+    private final String mTenPast = getResources().getString(R.string.fuzzy_ten_past);
+    private final String mQuarterPast = getResources().getString(R.string.fuzzy_quarter_past);
+    private final String mTwentyPast = getResources().getString(R.string.fuzzy_twenty_past);
+    private final String mTwentyFivePast = getResources().getString(R.string.fuzzy_twenty_five_past);
+    private final String mHalfPast = getResources().getString(R.string.fuzzy_half_past);
+    private final String mTwentyFiveTo = getResources().getString(R.string.fuzzy_twenty_five_to);
+    private final String mTwentyTo = getResources().getString(R.string.fuzzy_twenty_to);
+    private final String mQuarterTo = getResources().getString(R.string.fuzzy_quarter_to);
+    private final String mTenTo = getResources().getString(R.string.fuzzy_ten_to);
+    private final String mFiveTo = getResources().getString(R.string.fuzzy_five_to);
+    private final String mOne = getResources().getString(R.string.fuzzy_one);
+    private final String mTwo = getResources().getString(R.string.fuzzy_two);
+    private final String mThree = getResources().getString(R.string.fuzzy_three);
+    private final String mFour = getResources().getString(R.string.fuzzy_four);
+    private final String mFive = getResources().getString(R.string.fuzzy_five);
+    private final String mSix = getResources().getString(R.string.fuzzy_six);
+    private final String mSeven = getResources().getString(R.string.fuzzy_seven);
+    private final String mEight = getResources().getString(R.string.fuzzy_eight);
+    private final String mNine = getResources().getString(R.string.fuzzy_nine);
+    private final String mTen = getResources().getString(R.string.fuzzy_ten);
+    private final String mEleven = getResources().getString(R.string.fuzzy_eleven);
+    private final String mTwelve = getResources().getString(R.string.fuzzy_twelve);
     private Calendar mCalendar;
     private String mFormat;
     private TextView mTimeDisplay;
@@ -209,64 +232,38 @@ public class FuzzyClock extends LinearLayout {
     private void updateTime() {
         mCalendar.setTimeInMillis(System.currentTimeMillis());
         int mMinutes = mCalendar.get(mCalendar.MINUTE);
-        int mHours = mCalendar.get(mCalendar.HOUR);
-        CharSequence mTimeString;
-
-    String mNextH, mTimeH,
-        mOclock = " o\'clock",
-        mFivePast = "five after ",
-        mTenPast = "ten after ",
-        mQuarterPast = "a quarter after ",
-        mTwentyPast = " twenty",
-        mTwentyFivePast = "twenty five after ",
-        mHalfPast = "half past ",
-        mTwentyFiveTo = "twenty five till ",
-        mTwentyTo = "twenty till ",
-        mQuarterTo = "a quarter till ",
-        mTenTo = "ten till ",
-        mFiveTo = "five till ",
-        mOne = "one",
-        mTwo = "two",
-        mThree = "three",
-        mFour = "four",
-        mFive = "five",
-        mSix = "six",
-        mSeven = "seven",
-        mEight = "eight",
-        mNine = "nine",
-        mTen = "ten",
-        mEleven = "eleven",
-        mTwelve = "twelve";
+        int mHour = mCalendar.get(mCalendar.HOUR);
+        String mNextH, mTimeH, mTimeString;
 
         //hours
-        if(mHours == 1) { mNextH = mTwo; mTimeH = mOne; }
-        else if(mHours == 2) { mNextH = mThree; mTimeH = mTwo; }
-        else if(mHours == 3) { mNextH = mFour; mTimeH = mThree; }
-        else if(mHours == 4) { mNextH = mFive; mTimeH = mFour; }
-        else if(mHours == 5) { mNextH = mSix; mTimeH = mFive; }
-        else if(mHours == 6) { mNextH = mSeven; mTimeH = mSix; }
-        else if(mHours == 7) { mNextH = mEight; mTimeH = mSeven; }
-        else if(mHours == 8) { mNextH = mNine; mTimeH = mEight; }
-        else if(mHours == 9) { mNextH = mTen; mTimeH = mNine; }
-        else if(mHours == 10) { mNextH = mEleven; mTimeH = mTen; }
-        else if(mHours == 11) { mNextH = mTwelve; mTimeH = mEleven; }
-        else if(mHours == 12 || mHours == 0) { mNextH = mOne; mTimeH = mTwelve; }
+        if(mHour == 1) { mNextH = mTwo; mTimeH = mOne; }
+        else if(mHour == 2) { mNextH = mThree; mTimeH = mTwo; }
+        else if(mHour == 3) { mNextH = mFour; mTimeH = mThree; }
+        else if(mHour == 4) { mNextH = mFive; mTimeH = mFour; }
+        else if(mHour == 5) { mNextH = mSix; mTimeH = mFive; }
+        else if(mHour == 6) { mNextH = mSeven; mTimeH = mSix; }
+        else if(mHour == 7) { mNextH = mEight; mTimeH = mSeven; }
+        else if(mHour == 8) { mNextH = mNine; mTimeH = mEight; }
+        else if(mHour == 9) { mNextH = mTen; mTimeH = mNine; }
+        else if(mHour == 10) { mNextH = mEleven; mTimeH = mTen; }
+        else if(mHour == 11) { mNextH = mTwelve; mTimeH = mEleven; }
+        else if(mHour == 12 || mHour == 0) { mNextH = mOne; mTimeH = mTwelve; }
         else { mNextH = mTimeH = "it\'s fucked"; }// { mNextH = mOne; mTimeH = mTwelve; }
 
         //minutes
-        if ( 0 <= mMinutes && mMinutes <= 4 ) mTimeString = mTimeH + mOclock;
-        else if ( 5 <= mMinutes && mMinutes <= 9 ) mTimeString = mFivePast + mTimeH;
-        else if ( 10 <= mMinutes && mMinutes <= 14 ) mTimeString = mTenPast + mTimeH;
-        else if ( 15 <= mMinutes && mMinutes <= 19 ) mTimeString = mQuarterPast + mTimeH;
-        else if ( 20 <= mMinutes && mMinutes <= 24 ) mTimeString = mTimeH + mTwentyPast;
-        else if ( 25 <= mMinutes && mMinutes <= 29 ) mTimeString = mTwentyFivePast + mTimeH;
-        else if ( 30 <= mMinutes && mMinutes <= 34 ) mTimeString = mHalfPast + mTimeH;
-        else if ( 35 <= mMinutes && mMinutes <= 39 ) mTimeString = mTwentyFiveTo + mNextH;
-        else if ( 40 <= mMinutes && mMinutes <= 43 ) mTimeString = mTwentyTo + mNextH;
-        else if ( 44 <= mMinutes && mMinutes <= 47 ) mTimeString = mQuarterTo + mNextH;
-        else if ( 48 <= mMinutes && mMinutes <= 51 ) mTimeString = mTenTo + mNextH;
-        else if ( 52 <= mMinutes && mMinutes <= 55 ) mTimeString = mFiveTo + mNextH;
-        else if ( 56 <= mMinutes && mMinutes <= 60 ) mTimeString = mNextH + mOclock;
+        if      ( 0  <= mMinutes && mMinutes <= 4  ) mTimeString = mTimeH + " " + mOclock;
+        else if ( 5  <= mMinutes && mMinutes <= 9  ) mTimeString = mFivePast + " " + mTimeH;
+        else if ( 10 <= mMinutes && mMinutes <= 14 ) mTimeString = mTenPast + " " + mTimeH;
+        else if ( 15 <= mMinutes && mMinutes <= 19 ) mTimeString = mQuarterPast + " " + mTimeH;
+        else if ( 20 <= mMinutes && mMinutes <= 24 ) mTimeString = mTimeH + " " + mTwentyPast;
+        else if ( 25 <= mMinutes && mMinutes <= 29 ) mTimeString = mTwentyFivePast + " " + mTimeH;
+        else if ( 30 <= mMinutes && mMinutes <= 34 ) mTimeString = mHalfPast + " " + mTimeH;
+        else if ( 35 <= mMinutes && mMinutes <= 39 ) mTimeString = mTwentyFiveTo + " " + mNextH;
+        else if ( 40 <= mMinutes && mMinutes <= 43 ) mTimeString = mTwentyTo + " " + mNextH;
+        else if ( 44 <= mMinutes && mMinutes <= 47 ) mTimeString = mQuarterTo + " " + mNextH;
+        else if ( 48 <= mMinutes && mMinutes <= 51 ) mTimeString = mTenTo + " " + mNextH;
+        else if ( 52 <= mMinutes && mMinutes <= 55 ) mTimeString = mFiveTo + " " + mNextH;
+        else if ( 56 <= mMinutes && mMinutes <= 60 ) mTimeString = mNextH + " " + mOclock;
         else { mTimeString = "somethin\'s broke"; }
 
         //print the time

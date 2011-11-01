@@ -2465,7 +2465,33 @@
     <string name="permlab_revokePermissions">Allows view and edit of revoked permissions. Not for use by normal applications.</string>
     <!-- Description of an application permission that lets lets an application view/edit revoked permissions. -->
     <string name="permdesc_revokePermissions">Allows read and write for revoked permissions. Not for use by normal applications.</string>
-    
-    <string name="drews_custom_lockscreen_text">No sir! Go do your homework!"</string>
+
+    <string name="drews_custom_lockscreen_text">Fuck off please</string>
+
+    <!-- Lockscreen FuzzyClock Widget -->
+    <string name="fuzzy_one">one</string>
+    <string name="fuzzy_two">two</string>
+    <string name="fuzzy_three">three</string>
+    <string name="fuzzy_four">four</string>
+    <string name="fuzzy_five">five</string>
+    <string name="fuzzy_six">six</string>
+    <string name="fuzzy_seven">seven</string>
+    <string name="fuzzy_eight">eight</string>
+    <string name="fuzzy_nine">nine</string>
+    <string name="fuzzy_ten">ten</string>
+    <string name="fuzzy_eleven">eleven</string>
+    <string name="fuzzy_twelve">twelve</string>
+    <string name="fuzzy_oclock">o\'clock</string>
+    <string name="fuzzy_five_past">five after</string>
+    <string name="fuzzy_ten_past">ten after</string>
+    <string name="fuzzy_quarter_past">a quarter after</string>
+    <string name="fuzzy_twenty_past">twenty</string>
+    <string name="fuzzy_twenty_five_past">twenty five after</string>
+    <string name="fuzzy_half_past">half past</string>
+    <string name="fuzzy_twenty_five_to">twenty five till</string>
+    <string name="fuzzy_twenty_to">twenty till</string>
+    <string name="fuzzy_quarter_to">a quarter till</string>
+    <string name="fuzzy_ten_to">ten till</string>
+    <string name="fuzzy_five_to">five till</string>
 
 </resources>
