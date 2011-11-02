@@ -67,20 +67,20 @@
             />
 
     <!-- time and date -->
-        <com.android.internal.widget.FuzzyClock android:id="@+id/time"
+        <com.android.internal.widget.FuzzyClock
+            android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/carrier"
-            android:layout_marginTop="24dip"
-            android:layout_marginLeft="12dip"
-            android:layout_marginRight="12dip"
-            android:paddingBottom="8dip"
-            >
+            android:layout_marginTop="16dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:paddingBottom="8dip">
 
-            <TextView android:id="@+id/timeDisplay"
+            <TextView
+                android:id="@+id/timeDisplay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ellipsize="none"
                 android:textSize="48sp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:shadowColor="#C0000000"
@@ -90,20 +90,15 @@
                 android:layout_marginBottom="8dip"
                 />
 
-            <TextView android:id="@+id/am_pm"
+            <TextView
+                android:id="@+id/am_pm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/timeDisplay"
                 android:layout_alignBaseline="@id/timeDisplay"
                 android:singleLine="true"
-                android:ellipsize="none"
-                android:textSize="22sp"
-                android:layout_marginLeft="8dip"
+                android:textSize="20sp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:shadowColor="#C0000000"
-                android:shadowDx="0"
-                android:shadowDy="0"
-                android:shadowRadius="3.0"
                 />
         </com.android.internal.widget.FuzzyClock>
 
@@ -113,6 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/time"
             android:layout_marginLeft="24dip"
+            android:textSize="24sp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             />
 
@@ -161,7 +157,8 @@
             />
 
         <!-- album art -->
-        <ImageButton android:id="@+id/albumArt"
+        <ImageButton
+            android:id="@+id/albumArt"
             android:layout_width="125dip"
             android:layout_height="125dip"
             android:layout_below="@+id/musicNowPlaying"

@@ -1063,6 +1063,11 @@ public class RingSelector extends ViewGroup {
     }
 
     private void setHoverBackLight(float x, float y) {
+        int mRinglockStyle = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.RINGLOCK_STYLE_PREF, RinglockStyle.getIdByStyle(RinglockStyle.Bubble));
+        int resRingGreen=(mRinglockStyle == RinglockStyle.getIdByStyle(RinglockStyle.Bubble) ?
+                R.drawable.jog_ring_ring_green : R.drawable.jog_ring_rev_ring_green);
+
         if (mCurrentRing != mMiddleRing) {
             return;
         }
@@ -1077,7 +1082,7 @@ public class RingSelector extends ViewGroup {
             mCurrentRing.setRingBackgroundResource(R.drawable.jog_ring_ring_pressed_red);
             mPrevTriggered = true;
         } else if (!ringsTouched && mPrevTriggered) {
-            mCurrentRing.setRingBackgroundResource(R.drawable.jog_ring_ring_green);
+            mCurrentRing.setRingBackgroundResource(resRingGreen);
             mPrevTriggered = false;
         }
     }
