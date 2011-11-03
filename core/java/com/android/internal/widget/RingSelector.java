@@ -1067,8 +1067,10 @@ public class RingSelector extends ViewGroup {
                 Settings.System.RINGLOCK_STYLE_PREF, RinglockStyle.getIdByStyle(RinglockStyle.Bubble));
         int resRingGreen=(mRinglockStyle == RinglockStyle.getIdByStyle(RinglockStyle.Bubble) ?
                 R.drawable.jog_ring_ring_green : R.drawable.jog_ring_rev_ring_green);
+        int resRingPressedRed=(mRinglockStyle == RinglockStyle.getIdByStyle(RinglockStyle.Bubble) ?
+                R.drawable.jog_ring_ring_pressed_red : R.drawable.jog_ring_rev_ring_pressed_red);
 
-        if (mCurrentRing != mMiddleRing) {
+        if (mCurrentRing != mMiddleRing && mMiddlePrimary) {
             return;
         }
         boolean ringsTouched = false;
@@ -1079,7 +1081,7 @@ public class RingSelector extends ViewGroup {
             }
         }
         if (ringsTouched && !mPrevTriggered) {
-            mCurrentRing.setRingBackgroundResource(R.drawable.jog_ring_ring_pressed_red);
+            mCurrentRing.setRingBackgroundResource(resRingPressedRed);
             mPrevTriggered = true;
         } else if (!ringsTouched && mPrevTriggered) {
             mCurrentRing.setRingBackgroundResource(resRingGreen);
