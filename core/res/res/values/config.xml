@@ -422,7 +422,7 @@
     <integer name="config_ringSecIconSizeDIP">40</integer>
 
     <!-- Configure ring lockscreen secondary ring offset -->
-    <integer name="config_ringSecBaselineOffsetDIP">40</integer>
+    <integer name="config_ringSecBaselineOffsetDIP">60</integer>
 
     <!-- Configure ring lockscreen center secondary ring(s) offset -->
     <integer name="config_ringSecCenterOffsetDIP">20</integer>
