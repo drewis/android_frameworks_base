@@ -144,10 +144,10 @@ void OpenGLRenderer::setViewport(int width, int height) {
     mDirtyClip = false;
 }
 
-void OpenGLRenderer::getViewport(int &width, int &height) {
-    width = mWidth;
-    height = mHeight;
-}
+//void OpenGLRenderer::getViewport(int &width, int &height) {
+//    width = mWidth;
+//    height = mHeight;
+//}
 
 void OpenGLRenderer::prepare(bool opaque) {
     prepareDirty(0.0f, 0.0f, mWidth, mHeight, opaque);
